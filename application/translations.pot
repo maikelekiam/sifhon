@@ -23,7 +23,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2021-04-12 12:42:36+\n"
+"POT-Creation-Date: 2021-04-13 09:52:52+\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -117,6 +117,7 @@ msgstr ""
 
 
 #: domainapp.modules.simple.dom.impl.SimpleObjects#create()
+#: domainapp.modules.simple.dom.jugador.JugadorServicio#create()
 msgid "Create"
 msgstr ""
 
@@ -132,6 +133,7 @@ msgstr ""
 
 
 #: domainapp.modules.simple.dom.impl.SimpleObject#delete()
+#: domainapp.modules.simple.dom.jugador.Jugador#delete()
 msgid "Delete"
 msgstr ""
 
@@ -147,6 +149,7 @@ msgstr ""
 
 
 #: domainapp.modules.simple.dom.impl.SimpleObject#downloadJdoMetadata()
+#: domainapp.modules.simple.dom.jugador.Jugador#downloadJdoMetadata()
 msgid "Download Jdo Metadata"
 msgstr ""
 
@@ -154,6 +157,7 @@ msgstr ""
 #: domainapp.application.fixture.scenarios.DomainAppDemo#downloadLayoutXml()
 #: domainapp.application.services.homepage.HomePageViewModel#downloadLayoutXml()
 #: domainapp.modules.simple.dom.impl.SimpleObject#downloadLayoutXml()
+#: domainapp.modules.simple.dom.jugador.Jugador#downloadLayoutXml()
 #: org.apache.isis.applib.AbstractViewModel#downloadLayoutXml()
 #: org.apache.isis.applib.ViewModel#downloadLayoutXml()
 #: org.apache.isis.applib.domain.DomainObjectList#downloadLayoutXml()
@@ -221,6 +225,7 @@ msgstr ""
 
 
 #: domainapp.modules.simple.dom.impl.SimpleObjects#findByName()
+#: domainapp.modules.simple.dom.jugador.JugadorServicio#findByName()
 msgid "Find By Name"
 msgstr ""
 
@@ -241,6 +246,7 @@ msgstr ""
 
 
 #: domainapp.modules.simple.dom.impl.SimpleObject#datanucleusIdLong()
+#: domainapp.modules.simple.dom.jugador.Jugador#datanucleusIdLong()
 #: org.apache.isis.core.metamodel.services.jdosupport.Persistable_datanucleusIdLong#prop()
 msgid "Id"
 msgstr ""
@@ -266,12 +272,18 @@ msgid "Json"
 msgstr ""
 
 
+#: domainapp.modules.simple.dom.jugador.JugadorServicio
+msgid "Jugadores"
+msgstr ""
+
+
 #: org.apache.isis.applib.services.config.ConfigurationProperty#key
 msgid "Key"
 msgstr ""
 
 
 #: domainapp.modules.simple.dom.impl.SimpleObjects#listAll()
+#: domainapp.modules.simple.dom.jugador.JugadorServicio#listAll()
 msgid "List All"
 msgstr ""
 
@@ -297,6 +309,10 @@ msgstr ""
 #: domainapp.modules.simple.dom.impl.SimpleObject#updateName(java.lang.String)
 #: domainapp.modules.simple.dom.impl.SimpleObjects#create(java.lang.String)
 #: domainapp.modules.simple.dom.impl.SimpleObjects#findByName(java.lang.String)
+#: domainapp.modules.simple.dom.jugador.Jugador#name
+#: domainapp.modules.simple.dom.jugador.Jugador#updateName(java.lang.String)
+#: domainapp.modules.simple.dom.jugador.JugadorServicio#create(java.lang.String)
+#: domainapp.modules.simple.dom.jugador.JugadorServicio#findByName(java.lang.String)
 msgid "Name"
 msgstr ""
 
@@ -307,6 +323,7 @@ msgstr ""
 
 
 #: domainapp.modules.simple.dom.impl.SimpleObject#notes
+#: domainapp.modules.simple.dom.jugador.Jugador#notes
 msgid "Notes"
 msgstr ""
 
@@ -330,6 +347,7 @@ msgstr ""
 #: domainapp.application.fixture.scenarios.DomainAppDemo#openRestApi()
 #: domainapp.application.services.homepage.HomePageViewModel#openRestApi()
 #: domainapp.modules.simple.dom.impl.SimpleObject#openRestApi()
+#: domainapp.modules.simple.dom.jugador.Jugador#openRestApi()
 #: org.apache.isis.applib.AbstractViewModel#openRestApi()
 #: org.apache.isis.applib.ViewModel#openRestApi()
 #: org.apache.isis.applib.domain.DomainObjectList#openRestApi()
@@ -418,6 +436,7 @@ msgstr ""
 #: domainapp.application.fixture.scenarios.DomainAppDemo#rebuildMetamodel()
 #: domainapp.application.services.homepage.HomePageViewModel#rebuildMetamodel()
 #: domainapp.modules.simple.dom.impl.SimpleObject#rebuildMetamodel()
+#: domainapp.modules.simple.dom.jugador.Jugador#rebuildMetamodel()
 #: org.apache.isis.applib.AbstractViewModel#rebuildMetamodel()
 #: org.apache.isis.applib.ViewModel#rebuildMetamodel()
 #: org.apache.isis.applib.domain.DomainObjectList#rebuildMetamodel()
@@ -513,6 +532,7 @@ msgstr ""
 
 
 #: domainapp.modules.simple.dom.impl.SimpleObject#updateName()
+#: domainapp.modules.simple.dom.jugador.Jugador#updateName()
 msgid "Update Name"
 msgstr ""
 
@@ -529,6 +549,8 @@ msgstr ""
 
 #: domainapp.modules.simple.dom.impl.SimpleObject#datanucleusVersionLong()
 #: domainapp.modules.simple.dom.impl.SimpleObject#datanucleusVersionTimestamp()
+#: domainapp.modules.simple.dom.jugador.Jugador#datanucleusVersionLong()
+#: domainapp.modules.simple.dom.jugador.Jugador#datanucleusVersionTimestamp()
 #: org.apache.isis.core.metamodel.services.jdosupport.Persistable_datanucleusVersionLong#prop()
 #: org.apache.isis.core.metamodel.services.jdosupport.Persistable_datanucleusVersionTimestamp#prop()
 msgid "Version"

@@ -12,6 +12,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="sifhon" target="1.8" />
       <module name="sifhon (1)" target="1.8" />
       <module name="sifhon (2)" target="1.8" />
       <module name="sifhon-application" target="1.8" />
