@@ -20,11 +20,11 @@ package domainapp.application.services.homepage;
 
 import java.util.List;
 
+import domainapp.modules.simple.dom.jugador.Jugador;
+import domainapp.modules.simple.dom.jugador.JugadorServicio;
+import org.apache.isis.applib.annotation.CollectionLayout;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.Nature;
-import org.apache.isis.applib.services.i18n.TranslatableString;
-
-import domainapp.modules.simple.dom.impl.SimpleObject;
 import domainapp.modules.simple.dom.impl.SimpleObjects;
 
 @DomainObject(
@@ -33,14 +33,14 @@ import domainapp.modules.simple.dom.impl.SimpleObjects;
 )
 public class HomePageViewModel {
 
-    public TranslatableString title() {
-        return TranslatableString.tr("{num} objects", "num", getObjects().size());
-    }
+    public String title() {
+        return "Federacion";    }
 
-    public List<SimpleObject> getObjects() {
-        return simpleObjects.listAll();
+    @CollectionLayout(named="Jugadores")
+    public List<Jugador> getJugadores() {
+        return jugadorServicio.listAll();
     }
 
     @javax.inject.Inject
-    SimpleObjects simpleObjects;
+    JugadorServicio jugadorServicio;
 }

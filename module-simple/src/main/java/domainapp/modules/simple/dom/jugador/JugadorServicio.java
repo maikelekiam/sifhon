@@ -57,26 +57,26 @@ public class JugadorServicio {
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     @MemberOrder(sequence = "2")
     public List<Jugador> findByName(
-            @ParameterLayout(named="Name")
-            final String name
+            @ParameterLayout(named="Nombre")
+            final String nombre
     ) {
         TypesafeQuery<Jugador> q = isisJdoSupport.newTypesafeQuery(Jugador.class);
         final QJugador cand = QJugador.candidate();
         q = q.filter(
-                cand.name.indexOf(q.stringParameter("name")).ne(-1)
+                cand.nombre.indexOf(q.stringParameter("nombre")).ne(-1)
         );
-        return q.setParameter("name", name)
+        return q.setParameter("nombre", nombre)
                 .executeList();
     }
 
     @Programmatic
-    public Jugador findByNameExact(final String name) {
+    public Jugador findByNameExact(final String nombre) {
         TypesafeQuery<Jugador> q = isisJdoSupport.newTypesafeQuery(Jugador.class);
         final QJugador cand = QJugador.candidate();
         q = q.filter(
-                cand.name.eq(q.stringParameter("name"))
+                cand.nombre.eq(q.stringParameter("nombre"))
         );
-        return q.setParameter("name", name)
+        return q.setParameter("nombre", nombre)
                 .executeUnique();
     }
 
@@ -85,7 +85,7 @@ public class JugadorServicio {
         TypesafeQuery<Jugador> q = isisJdoSupport.newTypesafeQuery(Jugador.class);
         final QJugador candidate = QJugador.candidate();
         q.range(0,2);
-        q.orderBy(candidate.name.asc());
+        q.orderBy(candidate.nombre.asc());
         q.executeList();
     }
 
@@ -93,9 +93,17 @@ public class JugadorServicio {
     @Action(domainEvent = JugadorServicio.CreateDomainEvent.class)
     @MemberOrder(sequence = "3")
     public Jugador create(
-            @ParameterLayout(named="Name")
-            final String name) {
-        return repositoryService.persist(new Jugador(name));
+            final @ParameterLayout(named="Nombre") String nombre,
+            final @ParameterLayout(named="Apellido") String apellido,
+            final @ParameterLayout(named="Documento") String documento
+            ) {
+        final Jugador obj = repositoryService.instantiate(Jugador.class);
+        obj.setNombre(nombre);
+        obj.setApellido(apellido);
+        obj.setDocumento(documento);
+        repositoryService.persist(obj);
+
+        return obj;
     }
 
     @javax.inject.Inject

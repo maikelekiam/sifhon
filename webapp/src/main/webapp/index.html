@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>AdeT - Autorizaciones de Trabajo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="shortcut icon" href="/myico.ico" type="image/x-icon">
+    <link rel="icon" href="/myico.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/jquery-ui.css">
+
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    
+    <script type="text/javascript">
+    function muestraBotonLogin(){
+      var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      var IniciarSesionDiv = document.getElementById("IniciarSesionDiv");
+      var AndroidDiv = document.getElementById("AndroidDiv");
+      var SwaggerDiv = document.getElementById("SwaggerDiv");
+      if (isMobile) {
+          //alert("You are using Mobile");
+          IniciarSesionDiv.style.display = "none";
+          AndroidDiv.style.display = "";
+          SwaggerDiv.style.display = "none";
+      } else {
+        //alert("You are using Desktop")
+        IniciarSesionDiv.style.display = "";
+        AndroidDiv.style.display = "none";
+        SwaggerDiv.style.display = "none";
+      }
+    }
+    </script>
+
+    <style>
+    .imagenlogo {
+    max-width: 100%;
+    height: auto;
+    max-height: 150px;
+    display: table;
+    margin: 0 auto;
+    }
+    .flex {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    }
+
+    .app-btn {
+    width: 60%;
+    max-width: 280px;
+    color: #fff;
+    margin: 20px 10px;
+    text-align: left;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: "Lucida Grande", sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    padding-right: 10px;
+    padding-left: 10px;
+    }
+    .app-btn.blu {
+    background-color: #101010;
+    -webkit-transition: background-color 0.25s linear;
+    transition: background-color 0.25s linear;
+    }
+    .app-btn.blu:hover {
+    background-color: #454545;
+    text-decoration: none;
+    }
+    .app-btn p {
+    margin-top: 10px;
+    }
+
+    .app-btn i {
+    width: 20%;
+    text-align: center;
+    font-size: 28px;
+    margin-right: 7px;
+    color:white;
+    }
+
+    .app-btn.a {
+    text-decoration: none;
+    }
+
+    .app-btn .big-txt {
+    font-size: 17px;
+    text-transform: capitalize;
+    }
+    </style>
+
+  </head>
+  <body onload="muestraBotonLogin()" data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+  <div id="overlayer" style="background-color: #3e3e49"></div>
+  <div class="loader">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Cargando...</span>
+    </div>
+  </div>
+
+
+    <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+    <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+
+    <div class="container">
+    </div>
+
+    </header>
+
+      <div style="display:none; background-image: url(/images/FondoGris.png);"></div>
+     
+    <div class="site-blocks-cover overlay" style="background-image: url(/images/FondoInicio.jpg);" data-aos="fade" id="home-section">
+
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+
+          <div class="col-md-8 mt-lg-5 text-center">
+
+            <img class="imagenlogo" src="/images/Logo-principal.png">
+
+            <h1 data-aos="fade-up">Autorizaciones de Trabajo</h1>
+            <p class="mb-5 desc" data-aos="fade-up" data-aos-delay="100">Sistema para la gestion integral de permisos de trabajo</p>
+            
+
+            <div id="IniciarSesionDiv" data-aos="fade-up" data-aos-delay="100">
+              <a href="/wicket" class="btn smoothscroll btn-primary mr-2 mb-2">Iniciar Sesi&oacute;n</a>
+            </div>
+
+            
+            <!-- #### Boton para bajar apk #### -->
+            <div id="AndroidDiv" class="flex">
+            <a class="app-btn blu flex vert" href="/AdeT para Android.apk">
+              <i class="fa fa-android" aria-hidden="true"></i>
+              <p>Descargar app<br/> <span class="big-txt">para Android</span></p>
+            </a>
+          </div>
+            <!-- #### Boton para bajar apk #### -->
+          
+
+            <!-- #### Boton para acceder a Swagger #### -->
+            <div id="SwaggerDiv" data-aos="fade-up" data-aos-delay="100">
+              <a href="/swagger-ui/index.html" class="btn smoothscroll btn-secondary mr-2 mb-2">Swagger</a>
+            </div>
+            <!-- #### Boton para acceder a Swagger #### -->
+          </div>
+            
+        </div>
+      </div>
+
+
+    </div>  
+
+  </div> <!-- .site-wrap -->
+
+  <script src="/scripts/jquery-3.3.1.min.js"></script>
+  <script src="/scripts/jquery-ui.js"></script>
+  <script src="/scripts/mobile-detect.js"></script>
+  <script src="/scripts/loader.js"></script>
+    
+  </body>
+</html>

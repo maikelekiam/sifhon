@@ -18,19 +18,11 @@
  */
 package domainapp.modules.simple.dom.jugador;
 
+import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
 import com.google.common.collect.ComparisonChain;
-import org.apache.isis.applib.annotation.Action;
-import org.apache.isis.applib.annotation.Auditing;
-import org.apache.isis.applib.annotation.DomainObject;
-import org.apache.isis.applib.annotation.DomainObjectLayout;
-import org.apache.isis.applib.annotation.Editing;
-import org.apache.isis.applib.annotation.Parameter;
-import org.apache.isis.applib.annotation.ParameterLayout;
-import org.apache.isis.applib.annotation.Property;
-import org.apache.isis.applib.annotation.Publishing;
-import org.apache.isis.applib.annotation.Title;
+import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.services.i18n.TranslatableString;
 import org.apache.isis.applib.services.message.MessageService;
 import org.apache.isis.applib.services.repository.RepositoryService;
@@ -40,61 +32,74 @@ import static org.apache.isis.applib.annotation.CommandReification.ENABLED;
 import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
 import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE;
 
-@javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE, schema = "simple")
-@javax.jdo.annotations.DatastoreIdentity(strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY, column="id")
-@javax.jdo.annotations.Version(strategy= VersionStrategy.DATE_TIME, column="version")
-@javax.jdo.annotations.Unique(name="Jugador_name_UNQ", members = {"name"})
-@DomainObject(auditing = Auditing.ENABLED)
-@DomainObjectLayout()  // causes UI events to be triggered
+@javax.jdo.annotations.PersistenceCapable(
+        identityType=IdentityType.DATASTORE,
+        schema = "simple",
+        table="Jugador"
+)
+@javax.jdo.annotations.DatastoreIdentity(
+        strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY,
+        column="jugador_id"
+)
+@javax.jdo.annotations.Version(
+        strategy= VersionStrategy.DATE_TIME,
+        column="version"
+)
+@javax.jdo.annotations.Unique(
+        name="Jugador_documento_UNQ",
+        members = {"documento"}
+)
+@DomainObject(
+        bounded = true,
+        auditing = Auditing.ENABLED
+)
+@DomainObjectLayout(
+
+)  // causes UI events to be triggered
 @lombok.Getter @lombok.Setter
 @lombok.RequiredArgsConstructor
 public class Jugador implements Comparable<Jugador> {
 
-    @javax.jdo.annotations.Column(allowsNull = "false", length = 40)
-    @lombok.NonNull
-    @Property() // editing disabled by default, see isis.properties
-    @Title(prepend = "Jugador: ")
-    private String name;
+    public static final int NAME_LENGTH = 40;
 
-    @javax.jdo.annotations.Column(allowsNull = "true", length = 4000)
+    public Jugador(String nombre, String apellido, String documento) {
+        this.nombre=nombre;
+        this.apellido=apellido;
+        this.documento=documento;
+    }
+
+    public TranslatableString title() {
+        return TranslatableString.tr("{nombre}", "nombre",
+                this.getApellido() + ", " + this.getNombre()+" (DNI: "+this.getDocumento()+")");
+    }
+
+    @MemberOrder(sequence = "1")
+    @Column(allowsNull = "false", length = NAME_LENGTH)
     @Property(editing = Editing.ENABLED)
-    private String notes;
+    @Title(prepend = "Jugador: ")
+    private String nombre;
 
+    @MemberOrder(sequence = "2")
+    @Column(allowsNull = "false", length = NAME_LENGTH)
+    @Property(editing = Editing.ENABLED)
+    @Title(prepend = "Jugador: ")
+    private String apellido;
 
-    @Action(semantics = IDEMPOTENT, command = ENABLED, publishing = Publishing.ENABLED, associateWith = "name")
-    public Jugador updateName(
-            @Parameter(maxLength = 40)
-            @ParameterLayout(named = "Name")
-            final String name) {
-        setName(name);
-        return this;
-    }
-
-    public String default0UpdateName() {
-        return getName();
-    }
-
-    public TranslatableString validate0UpdateName(final String name) {
-        return name != null && name.contains("!") ? TranslatableString.tr("Exclamation mark is not allowed") : null;
-    }
-
-
-    @Action(semantics = NON_IDEMPOTENT_ARE_YOU_SURE)
-    public void delete() {
-        final String title = titleService.titleOf(this);
-        messageService.informUser(String.format("'%s' deleted", title));
-        repositoryService.remove(this);
-    }
-
+    //DOCUMENTO
+    @MemberOrder(sequence = "3")
+    @Column(allowsNull="false", length=8)
+    @Property(editing = Editing.ENABLED)
+    @Title(prepend = "Jugador: ")
+    private String documento;
 
     @Override
     public String toString() {
-        return getName();
+        return getNombre();
     }
 
     public int compareTo(final Jugador other) {
         return ComparisonChain.start()
-                .compare(this.getName(), other.getName())
+                .compare(this.getNombre(), other.getNombre())
                 .result();
     }
 
